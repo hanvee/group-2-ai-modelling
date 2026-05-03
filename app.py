@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
-import tensorflow as tf
+import keras
+from keras.models import load_model
 from PIL import Image
 import matplotlib.pyplot as plt
 
@@ -24,7 +25,7 @@ IMG_SIZE = 64
 
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model("cnn_model_optimized_TK2.keras")
+    return keras.models.load_model("cnn_model_optimized_TK2.keras")
 
 def preprocess_image(img: Image.Image) -> np.ndarray:
     img = img.convert("RGB").resize((IMG_SIZE, IMG_SIZE))
